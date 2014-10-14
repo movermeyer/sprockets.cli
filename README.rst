@@ -6,14 +6,12 @@ to be run by a controller that is managed by the sprockets CLI interface.
 The sprockets CLI interface loads controller applications that are registered
 using setuptools entry points.
 
-
 |Version| |Downloads| |Status| |Coverage| |License|
 
 Example CLI Usage
 -----------------
 
-Help
-````
+Help:
 
 .. code::
 
@@ -44,8 +42,7 @@ Help
     Find more Sprockets controllers and plugins at
     https://sprockets.readthedocs.org
 
-Starting a Web App with the NewRelic plugin
-```````````````````````````````````````````
+Starting a Web App with the NewRelic plugin:
 
 .. code::
 
