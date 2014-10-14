@@ -12,6 +12,11 @@ using setuptools entry points.
 Example CLI Usage
 -----------------
 
+Help
+````
+
+.. code::
+
     # sprockets --help
 
     usage: sprockets [-h] [--apps] [--plugins] [-e [PLUGIN]] [-s] [-v] [--version]
@@ -39,7 +44,12 @@ Example CLI Usage
     Find more Sprockets controllers and plugins at
     https://sprockets.readthedocs.org
 
+Starting a Web App with the NewRelic plugin
+```````````````````````````````````````````
 
+.. code::
+
+    # sprockets -e newrelic http my_web_app
 
 Controllers
 -----------
@@ -52,7 +62,7 @@ to inject configuration directives into the cli.
 
 Controller API Summary:
 
-.. code: python
+.. code:: python
 
     module.add_cli_arguments(ArgumentParser)     # optional
     module.main(app_module, argparse.Namespace)
@@ -69,7 +79,7 @@ method is defined, it will be invoked when a controller has shutdown.
 
 Plugin API Summary:
 
-.. code: python
+.. code:: python
 
     plugin.initialize(controller_module)   # optional
     plugin.on_start(controller_module)     # optional
@@ -82,17 +92,17 @@ Applications can be a python package or module and if they are registered
 to a specific controller, can be referenced by an alias. Application contracts
 vary by controller.
 
-.. |Version| image:: https://badge.fury.io/py/sprockets.svg?
-   :target: http://badge.fury.io/py/sprockets
+.. |Version| image:: https://badge.fury.io/py/sprockets.cli.svg?
+   :target: http://badge.fury.io/py/sprockets.cli
 
-.. |Status| image:: https://travis-ci.org/sprockets/sprockets.svg?branch=master
-   :target: https://travis-ci.org/sprockets/sprockets
+.. |Status| image:: https://travis-ci.org/sprockets/sprockets.cli.svg?branch=master
+   :target: https://travis-ci.org/sprockets/sprockets.cli
 
-.. |Coverage| image:: https://coveralls.io/repos/sprockets/sprockets/badge.png
-   :target: https://coveralls.io/r/sprockets/sprockets
+.. |Coverage| image:: https://coveralls.io/repos/sprockets/sprockets.cli/badge.png
+   :target: https://coveralls.io/r/sprockets/sprockets.cli
   
-.. |Downloads| image:: https://pypip.in/d/sprockets/badge.svg?
-   :target: https://pypi.python.org/pypi/sprockets
+.. |Downloads| image:: https://pypip.in/d/sprockets.cli/badge.svg?
+   :target: https://pypi.python.org/pypi/sprockets.cli
    
-.. |License| image:: https://pypip.in/license/sprockets/badge.svg?
+.. |License| image:: https://pypip.in/license/sprockets.cli/badge.svg?
    :target: https://sprockets.readthedocs.org
