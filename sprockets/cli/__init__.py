@@ -110,6 +110,7 @@ class CLI(object):
 
     """
     CONTROLLERS = 'sprockets.controller'
+    LOGGER = 'sprockets'
     PLUGINS = 'sprockets.plugin'
 
     def __init__(self):
@@ -251,8 +252,7 @@ class CLI(object):
                                              metavar='APP',
                                              help='Application to run')
 
-    @staticmethod
-    def _configure_logging(application, verbosity=0, syslog=False):
+    def _configure_logging(self, application, verbosity=0, syslog=False):
         """Configure logging for the application, setting the appropriate
         verbosity and adding syslog if it's enabled.
 
@@ -266,13 +266,13 @@ class CLI(object):
 
         # Increase the logging verbosity
         if verbosity == 1:
-            config['loggers']['sprockets']['level'] = logging.INFO
+            config['loggers'][self.LOGGER]['level'] = logging.INFO
         elif verbosity == 2:
-            config['loggers']['sprockets']['level'] = logging.DEBUG
+            config['loggers'][self.LOGGER]['level'] = logging.DEBUG
 
         # Add syslog if it's enabled
         if syslog:
-            config['loggers']['sprockets']['handlers'].append('syslog')
+            config['loggers'][self.LOGGER]['handlers'].append('syslog')
 
         # Copy the sprockets logger to the application
         config['loggers'][application] = dict(config['loggers']['sprockets'])

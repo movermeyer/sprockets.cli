@@ -12,46 +12,34 @@ import mock
 from sprockets import cli
 
 
+class Package(object):
+
+    def __init__(self, name, module_name):
+        self.name = name
+        self.module_name = module_name
+
+
 class InitializationTests(unittest.TestCase):
 
     @mock.patch('argparse.ArgumentParser.parse_args')
     @mock.patch('pkg_resources.iter_entry_points')
-    @mock.patch('importlib.import_module')
-    def setUp(self, import_module, iter_entry_points, parse_args):
-        self.import_module = import_module
+    def setUp(self, iter_entry_points, parse_args):
         self.iter_entry_points = iter_entry_points
         self.parse_args = parse_args
 
-        self.app_points = [mock.Mock(name='test_app',
-                                     module_name='mock_app')]
-        self.ctrl_points = [mock.Mock(name='test_http',
-                                      module_name='mock_http')]
-        self.plugin_points = [mock.Mock(name='test_plugin',
-                                        module_name='mock_plugin')]
-
-        self.mock_app = mock.Mock()
-        self.mock_controller = mock.Mock()
-        self.mock_controller.add_cli_arguments = self.add_cli_arguments = \
-            mock.Mock()
-        self.mock_plugin = mock.Mock()
+        self.app_points = [Package('tapp', 'sstubs.app')]
+        self.ctrl_points = [Package('tcontroller', 'sstubs.controller')]
+        self.plugin_points = [Package('tplugin', 'sstubs.plugin')]
 
         def entry_point_side_effect(*args, **kwargs):
             if kwargs.get('group') == 'sprockets.controller':
-                return self.ctrl_points
+                return iter(self.ctrl_points)
             elif kwargs.get('group') == 'sprockets.plugin':
-                return self.plugin_points
+                return iter(self.plugin_points)
             elif kwargs.get('group') == 'sprockets.test_http.app':
-                return self.app_points
-        self.iter_entry_points.side_effect = entry_point_side_effect
+                return iter(self.app_points)
 
-        def import_module_side_effect(*args, **kwargs):
-            if args[0] == 'mock_app':
-                return self.mock_app
-            elif args[0] == 'mock_http':
-                return self.mock_controller
-            elif args[0] == 'mock_plugin':
-                return self.mock_plugin
-        self.import_module.side_effect = import_module_side_effect
+        self.iter_entry_points.side_effect = entry_point_side_effect
         self.obj = cli.CLI()
 
     def test_pkg_resources_iterated(self):
@@ -59,9 +47,14 @@ class InitializationTests(unittest.TestCase):
                  mock.call(group='sprockets.plugin')]
         self.iter_entry_points.assert_has_calls(calls)
 
-    def test_controller_packages_imported(self):
-        self.import_module.assert_has_calls([mock.call('mock_http'),
-                                             mock.call('mock_plugin')])
+    def test_controller_imported(self):
+        for attr in ['add_cli_arguments', 'main']:
+            self.assertTrue(hasattr(self.obj._controllers.get('tcontroller'),
+                                    attr))
 
-    #def test_controller_argparse_method_invoked(self):
-    #    self.add_cli_arguments.assert_called_once_with(self.obj.arg_parser)
+    def test_plugin_is_imported(self):
+        for attr in ['initialize', 'on_start', 'on_shutdown']:
+            self.assertTrue(hasattr(self.obj._plugins.get('tplugin'), attr))
+
+
+
