@@ -21,4 +21,4 @@ deploy:
     all_branches: true
   user: sprockets
   password:
-    secure: VjpiEYdgOh+FXy0Xh7hoz15OQaViHo0JwkQAZh41EC5CGtLz4hUT3sUxxR0hsBLdFALv7j8yf68UyzyvKho1Rc1apAydDyzGduFBk9jsc9U3ZDjQ2rF+ROWjdjB0PN+yx1BJEui4YeK5W2hCzP9iPs/KRPuce8+UESTDyfZB3Kc=
+    secure: "im5rhCHvUN0lx94P/VrVmurw5gDNXdx13PJOnRu2Sat6s6sKz5uB7Kz+zivBcAIVNtjVM5x+GeKKzpYSbGqAIgHzMxBHcYQ3NHA7KEu6cc1yDkteX6WwahS6N0cWF6UIzU5fvKn8jbb+z7cqOv3txliydjxELj55o+s5/RQUYO8="
