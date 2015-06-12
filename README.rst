@@ -87,15 +87,15 @@ Example Entrypoints
 
 Controller:
 
-```python
-{'sprockets.controller': ['http=sprockets.controllers.http:None']},
-```
+.. code:: python
+
+    {'sprockets.controller': ['http=sprockets.controllers.http:None']},
 
 Application:
 
-```python
-{'sprockets.http.app': ['name=package.or.module:None']}
-```
+.. code:: python
+
+    {'sprockets.http.app': ['name=package.or.module:None']}
 
 Applications
 ------------
