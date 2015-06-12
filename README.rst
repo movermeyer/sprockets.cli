@@ -82,6 +82,21 @@ Plugin API Summary:
     plugin.on_start(controller_module)     # optional
     plugin.on_shutdown(controller_module)  # optional
 
+Example Entrypoints
+-------------------
+
+Controller:
+
+```python
+{'sprockets.controller': ['http=sprockets.controllers.http:None']},
+```
+
+Application:
+
+```python
+{'sprockets.http.app': ['name=package.or.module:None']}
+```
+
 Applications
 ------------
 

@@ -292,7 +292,7 @@ class CLI(object):
         """
         for pkg in self._get_applications(controller):
             if pkg.name == application:
-                return pkg.module_name
+                return importlib.import_module(pkg.module_name)
         return importlib.import_module(application)
 
     @staticmethod
