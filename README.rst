@@ -95,7 +95,9 @@ Application:
 
 .. code:: python
 
-    {'sprockets.http.app': ['name=package.or.module:None']}
+    {'sprockets.http.app': ['app-name=package.or.module:None']}
+
+(Replace ``app-name`` with the name of your application)
 
 Applications
 ------------
