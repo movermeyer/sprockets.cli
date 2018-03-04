@@ -115,8 +115,8 @@ vary by controller.
 .. |Coverage| image:: https://coveralls.io/repos/sprockets/sprockets.cli/badge.png
    :target: https://coveralls.io/r/sprockets/sprockets.cli
   
-.. |Downloads| image:: https://pypip.in/d/sprockets.cli/badge.svg?
+.. |Downloads| image:: https://img.shields.io/pypi/dm/sprockets.cli.svg
    :target: https://pypi.python.org/pypi/sprockets.cli
    
-.. |License| image:: https://pypip.in/license/sprockets.cli/badge.svg?
+.. |License| image:: https://img.shields.io/pypi/l/sprockets.cli.svg
    :target: https://sprockets.readthedocs.org
